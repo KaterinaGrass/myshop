@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product</title>
+</head>
+<head th:replace="common :: head"></head>
+<body  th:style="'background: url(images/background/addProduct.jpg) no-repeat center center fixed; background-size: cover;'">>
+<div th:insert="~{common :: scripts}"></div>
+<div th:replace="common :: navbar"></div>
+<div align="center">
+    <h1>Edit Product</h1>
+    <br />
+    <form action="#" th:action="@{/save}" th:object="${product}" method="post">
+
+        <table border="0" cellpadding="10">
+
+            <tr>
+                <td>Product ID:</td>
+                <td>
+                    <input type="text" th:field="*{id}" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>Product Name:</td>
+                <td>
+                    <input type="text" th:field="*{title}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><input type="text" th:field="*{description}" /></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td><input type="text" th:field="*{price}" /></td>
+            </tr>
+            <tr>
+                <td>Image:</td>
+                <td><input type="text" th:field="*{filename}" /></td>
+            </tr>
+            <tr>
+                <td>Category:</td>
+                <td><input type="text" th:field="*{category.title}" /></td>
+            </tr>
+            <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<footer th:insert="~{common :: footer}"></footer>
+</body>
+</html>

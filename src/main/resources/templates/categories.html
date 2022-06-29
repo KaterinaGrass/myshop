@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+    <meta charset="UTF-8">
+    <title>List categories</title>
+    </head>
+
+<body>
+
+<div align="left">
+    <h1>Category List</h1>
+    <a href="/categories/new">Create New Category</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <colgroup>
+            <col span="2" style="background-color:LightCyan"><!-- С помощью этой конструкции задаем цвет фона для первых двух столбцов таблицы-->
+            <col style="background-color:LightCyan"><!-- Задаем цвет фона для следующего (одного) столбца таблицы-->
+        </colgroup>
+        <thead>
+        <tr>
+            <th>Category ID</th>
+            <th>Title</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category : ${listCategories}">
+            <td th:text="${category.id}">Product ID</td>
+            <td th:text="${category.title}">Title</td>
+            <td>
+                <a th:href="@{'categories/deleteCategory/' + ${category.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

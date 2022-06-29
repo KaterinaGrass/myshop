@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>Контактная Информация</title>
+</head>
+<head th:replace="common :: head"></head>
+<body>
+<div th:insert="~{common :: scripts}"></div>
+<div th:replace="common :: navbar"></div>
+<div th:insert="~{/menu :: #nav-menu}"></div>
+<div id="container" class="container mt-5">
+  <h5>Контактная информация</h5>
+  <br>
+  <p><b>Телефон:</b> +375(29) 777-77-77<br/>
+    <b>E-mail:</b> shop@gmail.com</p>
+  <br>
+  <h6>Режим работы</h6>
+  <p>Интернет магазин работает c 10:00 до 20:00 без перерыва. Выходной воскресенье <br/></p>
+  <br>
+  <h6>Доставка</h6>
+  <p>Доставка заказов происходит через курьерскую службу</p>
+</div>
+<footer th:insert="~{common :: footer}"></footer>
+</body>
+</html>

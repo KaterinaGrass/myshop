@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>Product Manager</title>
+</head>
+<head th:replace="common :: head"></head>
+<body th:style="'background: url(images/background/addProduct.jpg) no-repeat center center fixed; background-size: cover;'" >
+<div th:insert="~{common :: scripts}"></div>
+<div th:replace="common :: navbar"></div>
+<div align="left"></div>
+
+    <h1>Product List</h1>
+    <a href="/new">Create New Product</a>
+    <br/><br/>
+<table border="1" cellpadding="10">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}">Product ID</td>
+            <td th:text="${product.title}">Title</td>
+            <td th:text="${product.description}">Description</td>
+            <td th:text="${product.quantity}">Quantity</td>
+            <td th:text="${product.price}">Price</td>
+            <td th:text="${product.category.title}">Category</td>
+            <td>
+                <img th:src="@{${product.filenameImagePath}}" style="width:100px ">
+            </td>
+            <td th:text="${product.filename}">Image</td><td>
+                <a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${product.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<footer th:insert="~{common :: footer}"></footer>
+</body>
+</html>

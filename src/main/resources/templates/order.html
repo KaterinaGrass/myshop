@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"lang="en"xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+<div th:insert="~{common :: scripts}"></div>
+<div th:replace="common :: navbar"></div>
+
+<div id="container">
+  <div class="container mt-5 pb-5">
+    <form action="/order" method="post" enctype="multipart/form-data">
+      <p class="h4 mb-4 text-center">My order</p>
+      <br>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name:</label>
+            <div class="col-sm-8">
+              <input type="text" name="firstName" th:value="${order} ? ${order.firstName} : ''"
+                     class="form-control" th:classappend="${firstNameError} ? ' is-invalid'" />
+              <div th:if="${firstNameError}" class="invalid-feedback" th:text="${firstNameError}"></div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Last Name:</label>
+            <div class="col-sm-8">
+              <input type="text" name="lastName" th:value="${order} ? ${order.lastName} : ''"
+                     class="form-control" th:classappend="${lastNameError} ? ' is-invalid'" />
+              <div th:if="${lastNameError}" class="invalid-feedback" th:text="${lastNameError}"></div>
+            </div>
+            <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Address:</label>
+            <div class="col-sm-8">
+              <input type="text" name="address" th:value="${order} ? ${order.address} : ''"
+                     class="form-control" th:classappend="${addressError} ? ' is-invalid'" />
+              <div th:if="${addressError}" class="invalid-feedback" th:text="${addressError}"></div>
+            </div>
+          </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Payment:</label>
+              <div class="col-sm-8">
+                <input type="text" name="payment" th:value="${order} ? ${order.payment} : ''"
+                       class="form-control" th:classappend="${paymentError} ? ' is-invalid'" />
+                <div th:if="${paymentError}" class="invalid-feedback" th:text="${paymentError}"></div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+          <div class="container-fluid">
+
+                  <div class="card-body text-center">
+                    <h5 th:text="${product.getTitle()}"></h5>
+                    <h6><span th:text="${product.getPrice()}"></span>,00 руб.</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-lg btn-success px-5 float-right">pay for the order</button>
+          <input type="hidden" name="totalPrice" th:value="${#aggregates.sum(products.![price])}">
+          <div class="row">
+            <p> </p>
+            <h4>К оплате : <span th:text="${#aggregates.sum(products.![price])}"></span> руб.</h4>
+          </div>
+        </div>
+
+    </form>
+  </div>
+</div>
+
+<footer th:insert="~{/common :: footer}"></footer>
+
+</body>
+</html>
+</body>
+</html>

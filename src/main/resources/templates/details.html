@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<head th:replace="common :: head"></head>
+<body>
+<div th:insert="~{common :: scripts}"></div>
+<div th:replace="common :: navbar"></div>
+<div class="container">
+    <h2>Details </h2>
+<span th:text="${'id: ' + selectedProduct.id + ', ' + selectedProduct.title +
+     ', ' + selectedProduct.description + ',' + selectedProduct. price+ 'руб.'}"></span>
+<p style="margin-top: 10px;">
+    <td>
+    <form action="/cart/add" method="post">
+        <button type="submit" name="add" class="btn btn-dark mx-3"
+                th:value="${product.getId()}">В корзину</button>
+    </form>
+    </td>
+</p>
+</div>
+<footer th:insert="~{common :: footer}"></footer>
+</body>
+</html>

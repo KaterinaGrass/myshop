@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" lang="en"xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title> Orders</title>
+</head>
+<head th:replace="/common :: head"></head>
+<body>
+<div th:insert="~{common :: scripts}"></div>
+<div th:replace="common :: navbar"></div>
+<div class="container">
+</div>
+<div class="container ">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Заказ №</th>
+            <th scope="col">Дата</th>
+            <th scope="col">Заказчик</th>
+            <th scope="col">Адресс</th>
+            <th scope="col">Товары</th>
+            <th scope="col">Сумма, руб.</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody th:each="order : ${orders}">
+        <tr>
+            <th th:text="${order.getId()}"></th>
+            <th th:text="${order.getDate()}"></th>
+            <th th:text="${order.getFirstName() + ' ' + order.getLastName()}"></th>
+            <th th:text="${ order.getAddress()}"></th>
+            <th>
+                <div th:each="product : ${order.getProducts}">
+                </div>
+            </th>
+            <th th:text="${order.getTotalPrice()}"></th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:insert="~{/common :: footer}"></footer>
+</body>
+</html>

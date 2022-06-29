@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title> Management System</title>
+</head>
+
+<body th:style="'background: url(images/background/bac.jpg) no-repeat center center fixed; background-size: cover;'" >
+
+<div class="container my-2">
+    <h1>User List</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Password</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Active</th>
+            <th>Role</th>
+            <th> Actions </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${userList}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.address}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.active}"></td>
+            <td>
+                <div th:each="userRole : ${user.getRoles()}">
+                    <p th:text="${userRole}"></p>
+                </div>
+            </td>
+            <td>  <a th:href="@{'users/editUser/' + ${user.id}}" >Edit</a>
+                <a th:href="@{users/deleteUser/{id}(id=${user.id})}" >Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

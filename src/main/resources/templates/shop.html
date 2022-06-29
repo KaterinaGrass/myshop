@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOP</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body th:style="'background: url(images/background/stile.jpg) no-repeat center center fixed; background-size: cover;'">
+<div th:insert="~{common :: scripts}"></div>
+<div th:replace="common :: navbar"></div>
+<div th:insert="~{/menu :: #nav-menu}"></div>
+<div align="left">
+    <h1>SHOP</h1>
+    <br/><br/>
+
+
+        <table border="1" cellpadding="10">
+
+        <thead>
+        <tr>
+            <td>Name</td>
+            <td>Price</td>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.title}"></td>
+            <td th:text="${product.price}"></td>
+            <td><a class="btn btn-secondary" th:href="@{'/details/' + ${product.id}}">Details</a></td>
+            <td>
+            <form th:action="@{/add}" method="post">
+                <button type="submit" name="add" class="btn btn-dark mx-3"
+                        th:value="${product.getId()}">В корзину</button>
+            </form>
+            </td>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
+
+</div>
+<footer th:insert="~{common :: footer}"></footer>
+</body>
+</html>
