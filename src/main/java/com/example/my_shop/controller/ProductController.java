@@ -44,9 +44,9 @@ public class ProductController {
     }
 
     @PostMapping(value = "/save")
-    public String saveProduct(Product product)  {
-
-        productService.saveProduct(product);
+    public String saveProduct(Product product, Category category)  {
+        product.setCategory(productService.getProductById(product.getId()).getCategory());
+        productService.saveProduct(product,category);
 
         return "redirect:/";
   }
@@ -60,11 +60,11 @@ public class ProductController {
         return "edit_product";
 
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     @GetMapping(value = "/delete/{id}")
     public String deleteProduct(@PathVariable(name = "id") Integer id) {
         productService.delete(id);
-        return "redirect:/";
+        return "redirect:/products";
     }
 
 

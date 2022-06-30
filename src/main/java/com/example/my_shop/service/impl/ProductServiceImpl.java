@@ -1,5 +1,6 @@
 package com.example.my_shop.service.impl;
 
+import com.example.my_shop.entity.model.Category;
 import com.example.my_shop.entity.model.Product;
 import com.example.my_shop.entity.repository.ProductRepository;
 import com.example.my_shop.service.ProductService;
@@ -54,9 +55,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public void saveProduct(Product product) {
+    public void saveProduct(Product product, Category category) {
         Product newProduct = new Product();
-        newProduct.setCategory(product.getCategory());
+        newProduct.setCategory(category);
         newProduct.setPrice(product.getPrice());
         newProduct.setTitle(product.getTitle());
         newProduct.setDescription(newProduct.getDescription());

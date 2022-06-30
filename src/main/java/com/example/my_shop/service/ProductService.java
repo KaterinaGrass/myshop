@@ -1,6 +1,7 @@
 package com.example.my_shop.service;
 
 
+import com.example.my_shop.entity.model.Category;
 import com.example.my_shop.entity.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +26,7 @@ Product getProductById(Integer id);
 
   void delete(Integer id);
 
-  void saveProduct (Product product);
+  void saveProduct (Product product, Category category);
 
  List<Product> findAll ();
 
