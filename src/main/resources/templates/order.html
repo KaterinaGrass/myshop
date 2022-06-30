@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en"lang="en"xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" >
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" >
 <head>
     <meta charset="UTF-8">
     <title>Order</title>
 </head>
+<head th:replace="common :: head"></head>
 <body>
 <div th:insert="~{common :: scripts}"></div>
 <div th:replace="common :: navbar"></div>
-
 <div id="container">
   <div class="container mt-5 pb-5">
-    <form action="/order" method="post" enctype="multipart/form-data">
+    <form action="/order" method="post" >
       <p class="h4 mb-4 text-center">My order</p>
       <br>
       <div class="row">
@@ -48,29 +48,23 @@
             </div>
             <div class="col-lg-6">
           <div class="container-fluid">
-
-                  <div class="card-body text-center">
-                    <h5 th:text="${product.getTitle()}"></h5>
-                    <h6><span th:text="${product.getPrice()}"></span>,00 руб.</h6>
-                  </div>
+             <div class="card-body text-center">
+             </div>
                 </div>
               </div>
             </div>
           </div>
-          <button class="btn btn-primary btn-lg btn-success px-5 float-right">pay for the order</button>
+          <button class=" btn btn-success float-right">Pay for the order</button>
           <input type="hidden" name="totalPrice" th:value="${#aggregates.sum(products.![price])}">
           <div class="row">
             <p> </p>
-            <h4>К оплате : <span th:text="${#aggregates.sum(products.![price])}"></span> руб.</h4>
+            <h4>To pay : <span th:text="${#aggregates.sum(products.![price])}"></span> руб.</h4>
           </div>
         </div>
-
     </form>
   </div>
 </div>
-
 <footer th:insert="~{/common :: footer}"></footer>
-
 </body>
 </html>
 </body>

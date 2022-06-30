@@ -38,7 +38,7 @@ public class OrderController {
         User userFromDB = userService.findByUsername(principal.getName());
         model.addAttribute("products", userFromDB.getProductList());
 
-        return "order/order";
+        return "order";
     }
 
     @PostMapping("/order")
@@ -57,7 +57,7 @@ public class OrderController {
             model.mergeAttributes(errorsMap);
             model.addAttribute("perfumes", user.getProductList());
 
-            return "order/order";
+            return "order";
         } else {
             order.getProducts().addAll(user.getProductList());
             order.setTotalPrice(validOrder.getTotalPrice());
@@ -79,28 +79,28 @@ public class OrderController {
 
     }
 
-    @GetMapping("/finalizeOrder")
+    @GetMapping(value = "/finalizeOrder")
     public String finalizeOrder(Model model) {
         List<Order> orderList = orderService.findAll();
         Order orderIndex = orderList.get(orderList.size() - 1);
         model.addAttribute("orderIndex", orderIndex.getId());
 
-        return "order/finalizeOrder";
+        return "finalize_order";
     }
-    @GetMapping("/userOrders")
+    @GetMapping(value = "/userOrders")
     public String getUserOrders(Principal principal, Model model) {
         User userFromDB = userService.findByUsername(principal.getName());
         List<Order> orders = orderService.findOrderByUser(userFromDB);
         model.addAttribute("orders", orders);
 
-        return "order/orders";
+        return "order";
     }
 
-    @GetMapping("/orders")
+    @GetMapping(value = "/orders")
     public String getAllOrders(Model model) {
         List<Order> orders = orderService.findAll();
         model.addAttribute("orders", orders);
 
-        return "order/orders";
+        return "order";
     }
 }

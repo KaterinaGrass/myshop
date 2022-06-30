@@ -3,10 +3,8 @@ package com.example.my_shop.entity.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
-
 
 @Data
 @NoArgsConstructor
@@ -20,13 +18,11 @@ public class Product {
     @Column
     private String title;
     @Column
-    private int quantity;
-    @Column
     private BigDecimal price;
     @Column(length = 65555)
     private String description;
 
-    @Column(length = 45, nullable = true)//
+    @Column(length = 45)
     private String filename;
 
     @ManyToOne
@@ -40,9 +36,4 @@ public class Product {
             return null;
         return "/product-filenames/"+ id + "/"+ filename;
     }
-
-
-
-
-
 }

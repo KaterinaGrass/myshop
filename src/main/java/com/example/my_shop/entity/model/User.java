@@ -8,7 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -19,8 +18,6 @@ import java.util.*;
 @AllArgsConstructor
 @Entity
 @Table
-
-
 public class User implements UserDetails{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -37,8 +34,7 @@ public class User implements UserDetails{
     @Column( unique = true, nullable = false)
     private String email;
     @NotBlank(message = "the address cannot be empty")
-    @Column
-    private String address;
+
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"))
@@ -47,16 +43,14 @@ public class User implements UserDetails{
     @Column
     private boolean active = true;
     @NotBlank(message = "the payment cannot be empty")
-    @Column
-    private String payment;
+
 
     @ManyToMany
-   @JoinTable(name = "user_product",
+    @JoinTable(name = "user_product",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
     private List<Product> productList;//
-    @Column
-    private String activationCode;
+
 
     @OneToMany(cascade = CascadeType.REMOVE,mappedBy = "user")
     private List<Order> orders;

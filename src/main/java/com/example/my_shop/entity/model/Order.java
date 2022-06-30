@@ -22,8 +22,6 @@ public class Order {
     @Column
     private LocalDate orderDate;
     @Column
-    private String shippingMethod;
-    @Column
     private BigDecimal totalPrice;
     @Column
     @NotBlank(message = "the address cannot be empty")
@@ -52,14 +50,5 @@ public class Order {
         this.user = user;
         this.products = new ArrayList<>();
     }
-
-
-
-
-
-
-
-
-
 
 }

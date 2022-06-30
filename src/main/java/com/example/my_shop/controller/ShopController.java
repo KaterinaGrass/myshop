@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import java.math.BigDecimal;
+import java.util.List;
 
 
 @Controller
@@ -23,39 +24,33 @@ public class ShopController {
 
     private final ProductService productService;
 
-    @RequestMapping("/contacts")
+    @RequestMapping(value = "/contacts")
     public String info() {
         return "contacts";
     }
 
-    @GetMapping("/shop")
+    @GetMapping(value = "/")
     public String toShop (@RequestParam (name = "title", required = false) String title, Model model) {
         model.addAttribute("products", productService.findAll(title));
-        return "shop";
-
+        return "main";
     }
 
-    @GetMapping("/details/{id}")
+    @GetMapping(value = "/details/{id}")
     public String toDetails(Model model, @PathVariable("id") Integer id) {
         Product selectedProduct = productService.getProductById(id);
         model.addAttribute("selectedProduct", selectedProduct);
         return "details";
     }
 
-        @GetMapping("/remove/{id}")
+        @GetMapping(value = "/remove/{id}")
         public String delete (@PathVariable("id") Integer id){
             productService.delete(id);
             return "redirect:/shop";
         }
 
-        @GetMapping("/cabinet")
-        public String userCabinet () {
-            return "user/userCabinet";
-        }
-
-    @GetMapping("/search")
+    @GetMapping(value = "/search")
     public String search(
-            @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 12) Pageable pageable,
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 5) Pageable pageable,
             @RequestParam String filter,
             Model model
     ) {
@@ -68,13 +63,21 @@ public class ShopController {
 
         return "menu";
     }
-
-
-
-
-
+    @GetMapping(value = "/sport")
+    public String listOfProducts (Model model) {
+        List<Product> products = productService.findAll();
+        model.addAttribute("products", products);
+        return "shop_list";
+    }
 
 }
+
+
+
+
+
+
+
 
 
 

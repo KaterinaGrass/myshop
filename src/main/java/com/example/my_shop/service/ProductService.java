@@ -29,13 +29,7 @@ Product getProductById(Integer id);
 
  List<Product> findAll ();
 
-
-
-
-
-
-
-
+    Page<Product> findByTitle( String productTitle, Pageable pageable);
 }
 
 

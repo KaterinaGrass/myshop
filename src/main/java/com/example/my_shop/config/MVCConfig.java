@@ -21,22 +21,11 @@ public class MVCConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
        registry.addResourceHandler("/styles/css/**")
                .addResourceLocations("classpath:/static/css/");
-       registry.addResourceHandler("/images/**")
-               //.addResourceLocations("file://" + uploadPath + "/");//?
-
-
-              .addResourceLocations("classpath:/static/images/");
-
-
-       registry.addResourceHandler("/js/**")
-               .addResourceLocations("classpath:/static/js/");
-        registry.addResourceHandler("/static/**")//?
+       registry.addResourceHandler("/static/**")//?
                 .addResourceLocations("classpath:/static/");
-
         Path productUploadDir = Paths.get("./product-filename/");
         String productUploadPath =  productUploadDir.toFile().getAbsolutePath();
         registry.addResourceHandler("/product-filename/**")
                 .addResourceLocations("/file:/"+ productUploadPath+ "/");
-
     }
 }

@@ -19,12 +19,11 @@ public class Category {
     @Column
     private String title;
 
-    @OneToMany( cascade = CascadeType.ALL, mappedBy = "category")
+    @OneToMany( cascade = CascadeType.ALL)
     private List<Product> products;
 
-
-
-
-
+    public Category (String title) {
+        this.title = title;
+    }
 
 }

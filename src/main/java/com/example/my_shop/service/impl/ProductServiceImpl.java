@@ -5,8 +5,11 @@ import com.example.my_shop.entity.repository.ProductRepository;
 import com.example.my_shop.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
@@ -60,15 +63,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
 
-
-
-
-
-
-
-
-
-
+    @Override
+    public Page<Product> findByTitle(String productTitle, Pageable pageable) {
+        return productRepository.findByTitle(productTitle, pageable);
+    }
 
 
 }

@@ -20,25 +20,6 @@ public interface UserService extends UserDetailsService {
 
     void delete(Integer id);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 

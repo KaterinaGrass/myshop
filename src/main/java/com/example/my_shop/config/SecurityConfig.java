@@ -23,8 +23,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userService;
     private final PasswordEncoder passwordEncoder;
 
-
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
        http
@@ -32,9 +30,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                .disable()
                .authorizeRequests()
                .antMatchers("/admin/**").hasRole("ADMIN")
-               .antMatchers("/cart**").hasAnyRole("USER", "ADMIN")
-               .antMatchers( "/registration/**",
-                       "/categories/**",  "/details/**" ,"/shop","/contacts/**","/menu/**", "/users/**","/**")
+               .antMatchers("/cart**").hasRole("USER")
+               .antMatchers( "/registration/**","/shop/**","/contacts/**", "/", "/categories/**," +
+                       "/details/**","/main","/menu/","/sport/**","/common/**","/static/**","/users/**")
                .permitAll()
                .anyRequest()
                .authenticated()
@@ -45,21 +43,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                .and()
                .logout()
                   .permitAll();
-                //  .logoutSuccessUrl("/shop");
     }
-
     @Override
     public void configure(WebSecurity web) throws Exception {
-       web.ignoring()
-               .antMatchers("/images/**","/css/**");
+        web.ignoring()
+                .antMatchers("/images/","/css/","/common/**");
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
-
     }
-
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();

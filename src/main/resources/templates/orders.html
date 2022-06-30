@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title> Orders</title>
 </head>
-<head th:replace="/common :: head"></head>
+<head th:replace="common :: head"></head>
 <body>
 <div th:insert="~{common :: scripts}"></div>
 <div th:replace="common :: navbar"></div>
@@ -38,6 +38,6 @@
         </tbody>
     </table>
 </div>
-<footer th:insert="~{/common :: footer}"></footer>
+<footer th:insert="~{common :: footer}"></footer>
 </body>
 </html>

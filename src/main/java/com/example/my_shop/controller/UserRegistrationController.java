@@ -20,22 +20,20 @@ public class UserRegistrationController {
 
     private final UserService userService;
 
-    @GetMapping("/login")
+    @GetMapping(value = "/login")
     public String login() {
         return "login";
     }
 
-    @GetMapping("/registration")
+    @GetMapping(value = "/registration")
     public String registration() {
         return "registration";
     }
 
 
-    @PostMapping("/registration")
+    @PostMapping(value = "/registration")
     public String createUser(User user) {
         userService.createUser(user);
         return "redirect:/login";
     }
-
-
 }

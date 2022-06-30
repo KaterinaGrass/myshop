@@ -66,7 +66,6 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findUserById(Integer id) {
 
         return userRepository.findById(id);
-
     }
 
     @Override
@@ -78,15 +77,10 @@ public class UserServiceImpl implements UserService {
         throw new UsernameNotFoundException("Could not find user with id:" + id);
     }
 
-
-
     @Override
     public void delete(Integer id) {
         userRepository.deleteById(id);
     }
-
-
-
 }
 
 

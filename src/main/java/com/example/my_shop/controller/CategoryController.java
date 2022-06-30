@@ -3,6 +3,7 @@ package com.example.my_shop.controller;
 import com.example.my_shop.entity.model.Category;
 import com.example.my_shop.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,6 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-//@RequestMapping("/categories")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -24,8 +24,9 @@ public class CategoryController {
     public String showCategoryNewForm (Model model) {
         model.addAttribute("category", new Category());
         return "category_form";
-
     }
+
+
     @PostMapping(value = "/categories/save")
     public String saveCategory(Category category) {
         categoryService.save(category);
