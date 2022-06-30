@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.math.BigDecimal;
+
 import java.util.List;
 
 
@@ -33,13 +33,6 @@ public class ShopController {
     public String toShop (@RequestParam (name = "title", required = false) String title, Model model) {
         model.addAttribute("products", productService.findAll(title));
         return "main";
-    }
-
-    @GetMapping(value = "/details/{id}")
-    public String toDetails(Model model, @PathVariable("id") Integer id) {
-        Product selectedProduct = productService.getProductById(id);
-        model.addAttribute("selectedProduct", selectedProduct);
-        return "details";
     }
 
         @GetMapping(value = "/remove/{id}")

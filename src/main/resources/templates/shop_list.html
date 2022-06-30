@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>SPORT</title>
+</head>
+<head th:replace="common :: head"></head>
+<body>
+<div th:insert="~{common :: scripts}"></div>
+<div th:replace="common :: navbar"></div>
+<table border="1" cellpadding="10">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.title}">Title</td>
+        <td th:text="${product.price}">Price</td>
+        <td th:text="${product.category.title}">Category</td>
+        <td><a th:href="@{/product/{path} (path = ${product.getId()})}" class="btn btn-dark">Купить</a>                                   </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<footer th:insert="~{common :: footer}"></footer>
+</body>
+</html>

@@ -34,7 +34,7 @@ public class ProductController {
         model.addAttribute("products", products);
         return "products";
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     @GetMapping(value = "/new")
     public String showNewProductForm(Model model) {
         List<Category> listCategories = categoryService.listCategory();
@@ -42,16 +42,16 @@ public class ProductController {
         model.addAttribute("listCategories", listCategories);
         return "products_new";
     }
-    @PreAuthorize("hasAuthority('ADMIN')")
+
     @PostMapping(value = "/save")
-    public String saveProduct(Product product, Model model)  {
+    public String saveProduct(Product product)  {
+
         productService.saveProduct(product);
 
         return "redirect:/";
   }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
-   @GetMapping(value = "/edit/{id}")
+    @GetMapping(value = "/edit/{id}")
     public String showEditProductPage (@PathVariable (name = "id") Integer id, Model model) {
         Product product = productService.findById(id).get();
         model.addAttribute("product", product);

@@ -55,6 +55,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public void saveProduct(Product product) {
+        Product newProduct = new Product();
+        newProduct.setCategory(product.getCategory());
+        newProduct.setPrice(product.getPrice());
+        newProduct.setTitle(product.getTitle());
+        newProduct.setDescription(newProduct.getDescription());
+
         productRepository.save(product);
     }
 

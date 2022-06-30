@@ -1,0 +1,41 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common :: head"></head>
+
+<body>
+<div th:insert="~{common :: scripts}"></div>
+<div th:replace="common :: navbar"></div>
+
+<div id="container">
+  <div class="container mt-5 pb-5">
+    <div class="row">
+      <div class="col-md-7">
+        <h2 th:text="${product.getTitle()}"></h2>
+        <p>Код товара: <span th:text="${product.getId()}"></span></p>
+        <p style="color: #54C0A1">Есть в наличии</p>
+        <div class="row ml-1">
+          <h6 class="mr-5"><span th:text="${product.getPrice()}"></span>,00 руб.</h6>
+          <!--                    <label class="px-3">Количество:</label>-->
+          <form action="/cart/add" method="post">
+            <!--                        <input type="text" name="amount" placeholder="1">-->
+            <button type="submit" name="add" class="btn btn-dark mx-3"
+                    th:value="${product.getId()}">В корзину</button>
+          </form>
+          <!--                    <input type="text" value="1">-->
+          <!--                    <button type="submit" class="btn btn-dark mx-3">В корзину</button>-->
+        </div>
+        <br>
+        <table class="table">
+          <tbody>
+          <tr><td>Название :</td><td th:text="${product.getTitle()}"></td></tr>
+          <tr><td>description: </td><td th:text="${product.getDescription()}"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<footer th:insert="~{common :: footer}"></footer>
+</body>
+</html>

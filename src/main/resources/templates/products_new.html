@@ -2,9 +2,6 @@
 <html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title th:if="${product.id == null}">Create New Product</title>
-    <title th:unless="${product.id == null}">Edit New Product</title>
-
 </head>
 <head th:replace="common :: head"></head>
 <body>
@@ -14,8 +11,6 @@
 <div ><h1>Create New Product  </h1></div>
 
 <form th:action="@{/save}" th:object="${product}" method="post">
-
-
     <input type="hidden" th:firld="*{id}" th:value="${product.id}" />
 
     <div class="m-3">
