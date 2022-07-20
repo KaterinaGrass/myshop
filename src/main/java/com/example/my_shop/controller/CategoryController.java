@@ -38,9 +38,4 @@ public class CategoryController {
     model.addAttribute("listCategories", listCategories);
     return "categories";
     }
-
-
-
-
-
 }

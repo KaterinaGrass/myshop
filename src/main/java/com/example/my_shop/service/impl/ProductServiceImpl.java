@@ -10,14 +10,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 
+
+import java.math.BigDecimal;
 import java.util.List;
-
 import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
@@ -29,12 +30,13 @@ public class ProductServiceImpl implements ProductService {
 
       @Override
     public Product getProductById(Integer id) {
-          if (productRepository.findById(id).isPresent()) {
+         // if (productRepository.findById(id).isPresent()) {
               return productRepository.findById(id).get();
           }
-          return null;
 
-    }
+         // return ;
+
+  //  }
 
     @Override
     public Optional<Product> findById(Integer id) {
@@ -65,15 +67,13 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
     }
 
+
+
     @Override
     public List<Product> findAll() {
         return productRepository.findAll();
     }
 
-    @Override
-    public Page<Product> findByTitle(String productTitle, Pageable pageable) {
-        return productRepository.findByTitle(productTitle, pageable);
-    }
 
 
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Data
@@ -18,6 +19,8 @@ public class Category {
     private Integer id;
     @Column
     private String title;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")//
+    private List<Product> products;
 
     public Category (String title) {
         this.title = title;

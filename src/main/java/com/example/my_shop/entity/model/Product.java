@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
+
 
 @Data
 @NoArgsConstructor
@@ -22,13 +22,18 @@ public class Product {
     private BigDecimal price;
     @Column(length = 65555)
     private String description;
-
     @Column(length = 45)
     private String filename;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @ManyToOne (cascade = CascadeType.MERGE)
+    @JoinColumn(name = "category_id")
     private Category category;
+   // @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+   // @JoinTable(name = "product_category",
+           // joinColumns = @JoinColumn(name = "product_id"),
+          //  inverseJoinColumns = @JoinColumn(name = "category_id"))
+   // private List<Category> categories;
+
 
 
     @Transient

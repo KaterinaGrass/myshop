@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional//sec
+    @Transactional
     public boolean createUser(User user) {
         if (userRepository.findByUsername(user.getUsername()) != null)
             return false;

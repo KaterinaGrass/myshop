@@ -1,14 +1,10 @@
 package com.example.my_shop.controller;
-//import com.example.my_shop.entity.model.Order;
 import com.example.my_shop.entity.model.Order;
 import com.example.my_shop.entity.model.User;
-import com.example.my_shop.entity.repository.OrderRepository;
-//import com.example.my_shop.service.CartService;
 import com.example.my_shop.service.OrderService;
 import com.example.my_shop.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.security.Principal;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -70,7 +64,7 @@ public class OrderController {
 
             orderService.save(order);
 
-            log.debug("User {} id={} made an order: FirstName={}, LastName={}, TotalPrice={} " +
+            log.info("User {} id={} made an order: FirstName={}, LastName={}, TotalPrice={} " +
                             "Address={}, payment={}",
                     user.getUsername(), user.getId(), order.getFirstName(), order.getLastName(), order.getTotalPrice(),
                     order.getAddress(), order.getPayment());

@@ -6,7 +6,6 @@ import com.example.my_shop.service.ProductService;
 import com.example.my_shop.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +16,7 @@ import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
-@Slf4j
+
 public class ShoppingCartController {
     private final UserService userService;
 

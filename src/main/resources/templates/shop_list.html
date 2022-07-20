@@ -21,7 +21,6 @@
     <tr th:each="product : ${products}">
         <td th:text="${product.title}">Title</td>
         <td th:text="${product.price}">Price</td>
-        <td th:text="${product.category.title}">Category</td>
         <td><a th:href="@{/product/{path} (path = ${product.getId()})}" class="btn btn-dark">Купить</a>                                   </td>
     </tr>
     </tbody>

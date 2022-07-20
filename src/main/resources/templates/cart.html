@@ -9,16 +9,12 @@
 
 <div id="container">
   <div class="container mt-5 pb-5">
-
     <p class="h4 mb-4 text-center">Корзина</p>
-
     <div class="text-center" th:if="${products.size() == 0}">
       <p>Корзина пуста</p>
     </div>
-
     <div th:if="${products.size() > 0}">
-
-      <div class="card mb-3 mx-auto" style="max-width: 940px;" th:each="product : ${listProducts}" >
+      <div class="card mb-3 mx-auto" style="max-width: 940px;" th:each="product : ${products}" >
         <div class="row no-gutters">
           <div class="col-3 p-2">
             <img th:src="@{/img/{path} (path = ${product.getFilename()})}" class="rounded mx-auto w-50">
@@ -56,12 +52,9 @@
           </form>
         </div>
       </div>
-
     </div>
-
   </div>
 </div>
-
 <footer th:insert="~{common :: footer}"></footer>
 </body>
 </html>

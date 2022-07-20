@@ -20,8 +20,8 @@
             <th>Title</th>
             <th>Description</th>
             <th>Price</th>
-            <th>Category</th>
             <th>Image</th>
+            <th>Category</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -31,8 +31,11 @@
             <td th:text="${product.title}">Title</td>
             <td th:text="${product.description}">Description</td>
             <td th:text="${product.price}">Price</td>
-            <td th:text="${product.category.title}">Category</td>
-            <td th:text="${product.filename}">Image</td><td>
+            <td th:text="${product.filename}">Image</td>
+            <td th:text="${product.category.title}">Image</td>
+
+            <td>
+
                 <a th:href="@{'/edit/' + ${product.id}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;
                 <a th:href="@{'/delete/' + ${product.id}}">Delete</a>

@@ -41,21 +41,21 @@ public class ShopController {
             return "redirect:/shop";
         }
 
-    @GetMapping(value = "/search")
-    public String search(
-            @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 5) Pageable pageable,
-            @RequestParam String filter,
-            Model model
-    ) {
-        Page<Product> page = productService.findByTitle( filter, pageable);
-        int[] pagination = UtilController.computePagination(page);
+  //  @GetMapping(value = "/search")
+  //  public String search(
+          //  @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 5) Pageable pageable,
+          //  @RequestParam String filter,
+           // Model model
+  //  ) {
+      //  Page<Product> page = productService.findByTitle( filter, pageable);
+      //  int[] pagination = UtilController.computePagination(page);
 
-        model.addAttribute("pagination", pagination);
-        model.addAttribute("url", "/shop");
-        model.addAttribute("page", page);
+      //  model.addAttribute("pagination", pagination);
+      //  model.addAttribute("url", "/shop");
+      //  model.addAttribute("page", page);
 
-        return "menu";
-    }
+      //  return "menu";
+  //  }
     @GetMapping(value = "/sport")
     public String listOfProducts (Model model) {
         List<Product> products = productService.findAll();
